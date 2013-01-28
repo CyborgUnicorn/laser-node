@@ -12,7 +12,20 @@ hid.devices().forEach(function(device) {
 if(!lr)
   throw new Error('fcuk yuo');
 
-var cmd = 'I ass derp Bruce onions lesbian fart';
+var read = function() {
+  lr.read(function(error, data) {
+
+    if(error)
+      console.log('Error', error);
+    if(data)
+      console.log(data, data.map(function(i) { return String.fromCharCode(i); }).join(''));
+    read();
+  });
+};
+
+read();
+
+var cmd = 'penis';
 var data = cmd.split('').map(function(c) { return c.charCodeAt(); });
 
 
